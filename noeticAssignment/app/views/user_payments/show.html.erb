@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @user_payment.id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @user_payment.amount %>
+</p>
+
+<p>
+  <strong>Stripe token:</strong>
+  <%= @user_payment.stripe_token %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_payment.user %>
+</p>
+
+<p>
+  <strong>Payment date:</strong>
+  <%= @user_payment.payment_date %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_user_payment_path(@user_payment) %> |
+<%= link_to 'Back', user_payments_path %>

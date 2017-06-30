@@ -1,0 +1,48 @@
+<%= form_for(@user_payment) do |f| %>
+  <% if @user_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_payment.errors.count, "error") %> prohibited this user_payment from being saved:</h2>
+
+      <ul>
+      <% @user_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :stripe_token %><br>
+    <%= f.text_field :stripe_token %>
+  </div>
+  <div id="payment-errors"></div>
+
+  <span class="help-block">You can pay using: Mastercard, Visa, American Express, JCB, Discover, and Diners Club.</span>
+
+  <div class="alert alert-info"><h4>JavaScript Required!</h4>For security purposes, JavaScript is required in order to complete an order.</div>
+
+<br/>  <label>Card Number</label>
+  <input type="text" size="20" autocomplete="off" class="card-number input-medium">
+  <br/><span class="help-block">Enter the number without spaces or hyphens.</span>
+<br/>  <br/><label>CVC</label>
+  <input type="text" size="4" autocomplete="off" class="card-cvc input-mini">
+<br/>  <br/><label>Expiration (MM/YYYY)</label>
+  <input type="text" size="2" class="card-expiry-month input-mini">
+  <span> / </span>
+  <input type="text" size="4" class="card-expiry-year input-mini">
+
+<br/><br/>
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <script src="js/buy.js"></script>
+<% end %>

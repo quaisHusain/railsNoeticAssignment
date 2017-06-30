@@ -1,0 +1,45 @@
+
+<% if !@current_user.nil?  %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  <h1>Listing user_payments for  <% @current_user.name %></h1>
+
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>
+  </li>
+<% end %>
+<table>
+  <thead>
+    <tr>
+
+      <th>Amount</th>
+      <th>Stripe token</th>
+      <th>User</th>
+      <th>Payment date</th>
+      <th>Datetime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_payments.each do |user_payment| %>
+      <tr>
+
+        <td><%= user_payment.amount %></td>
+        <td><%= user_payment.stripe_token %></td>
+        <td><%= user_payment.user %></td>
+        <td><%= user_payment.payment_date %></td>
+        <td><%= user_payment.datetime %></td>
+        <td><%= link_to 'Show', user_payment %></td>
+        <td><%= link_to 'Edit', edit_user_payment_path(user_payment) %></td>
+        <td><%= link_to 'Destroy', user_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= link_to 'New User payment', new_user_payment_path %>
