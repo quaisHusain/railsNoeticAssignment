@@ -15,6 +15,8 @@ root :to => "user_payments#index"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 resources :user_payments
+resources :charges
+
   # Example resource route with options:
   #   resources :products do
   #     member do

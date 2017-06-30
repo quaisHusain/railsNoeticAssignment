@@ -29,11 +29,10 @@
 
         <td><%= user_payment.amount %></td>
         <td><%= user_payment.stripe_token %></td>
-        <td><%= user_payment.user %></td>
+        <td><%= user_payment.user.email %></td>
         <td><%= user_payment.payment_date %></td>
         <td><%= user_payment.datetime %></td>
         <td><%= link_to 'Show', user_payment %></td>
-        <td><%= link_to 'Edit', edit_user_payment_path(user_payment) %></td>
         <td><%= link_to 'Destroy', user_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -42,4 +41,4 @@
 
 <br/>
 
-<%= link_to 'New User payment', new_user_payment_path %>
+<%= link_to 'New User payment', new_charge_path %>

@@ -20,7 +20,7 @@ function reportError(msg) {
 $(document).ready(function() {
 
 	// Watch for a form submission:
-	$("#payment-form").submit(function(event) {
+	$("#new_user_payment").submit(function(event) {
 
 		// Flag variable:
 		var error = false;
@@ -81,13 +81,13 @@ function stripeResponseHandler(status, response) {
 
 	} else { // No errors, submit the form:
 
-	  var f = $("#payment-form");
+	  var f = $("#new_user_payment");
 
 	  // Token contains id, last4, and card type:
 	  var token = response['id'];
 
 	  // Insert the token into the form so it gets submitted to the server
-	  f.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+	  f.append("<input type='hidden' name='stripe_token' value='" + token + "' />");
 
 	  // Submit the form:
 	  f.get(0).submit();

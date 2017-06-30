@@ -27,9 +27,10 @@ class UserPaymentsController < ApplicationController
   # POST /user_payments.json
   def create
     @user_payment = UserPayment.new(user_payment_params)
-
+@user_payment.stripe_token = flash[:stripe_token]
       @user_payment.payment_date = Time.now
       @user_payment.user_id = current_user.id;
+        @user_payment.amount = 10;
     respond_to do |format|
       if @user_payment.save
         format.html { redirect_to @user_payment, notice: 'User payment was successfully created.' }
